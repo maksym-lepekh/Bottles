@@ -648,6 +648,12 @@ class WineCommand:
                     status=TerminalUtils().execute(self.command, self.env, self.colors, self.cwd)
                 )
 
+        logging.info(f"Command: {self.command}")
+        logging.info("Environment:")
+        for k, v in self.env.items():
+            logging.info(f"{k}={v}")
+        logging.info(f"Working dir: {self.cwd}")
+
         # prepare proc if we are going to execute command internally
         # proc should always be `Popen[bytes]` to make sure
         # stdout_data's type is `bytes`
